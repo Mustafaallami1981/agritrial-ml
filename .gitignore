@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+# research data are never committed
+data/*.xls
+data/*.xlsx
+data/*.csv
+results/*
+!results/.gitkeep
+evaluation/_tmp/

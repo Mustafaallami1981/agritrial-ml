@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "agritrial-ml: reproducible, leakage-aware machine-learning analysis of designed field trials"
+version: 0.1.0
+date-released: 2026-11-09
+license: MIT
+repository-code: "https://github.com/USERNAME/agritrial-ml"
+authors:
+  - family-names: Al-Lami
+    given-names: Mustafa Naser
+    affiliation: "University of Misan, Iraq"
+    email: Mustafa.n@uomisan.edu.iq
+# Add co-authors here (family-names, given-names, affiliation, orcid) once the author list is agreed.
+keywords:
+  - reproducible research software
+  - data leakage
+  - grouped cross-validation
+  - field trials
+  - machine learning

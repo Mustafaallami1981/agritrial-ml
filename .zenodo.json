@@ -1,0 +1,11 @@
+{
+  "title": "agritrial-ml: reproducible, leakage-aware machine-learning analysis of designed field trials",
+  "upload_type": "software",
+  "description": "Configuration-driven Python pipeline that validates field-trial data, defines target, treatment groups, unit of analysis and timing-based predictor sets, fits preprocessing inside training folds, evaluates models with leave-one-treatment-out validation and permutation tests, and exports results with an exclusion log and a hashed run manifest. The case-study source workbook is not included.",
+  "creators": [
+    {"name": "Al-Lami, Mustafa Naser", "affiliation": "University of Misan, Iraq"}
+  ],
+  "license": "MIT",
+  "keywords": ["reproducible research software", "data leakage", "grouped cross-validation", "field trials", "machine learning"],
+  "version": "0.1.0"
+}
