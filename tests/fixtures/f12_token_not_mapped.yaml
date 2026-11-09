@@ -1,0 +1,80 @@
+# SYNTHETIC TEST FIXTURE - not agricultural data
+data:
+  file: f12_token_not_mapped.csv
+  first_row: 1
+  tokens: {}
+design:
+  block: 0
+  factors:
+    A: 1
+    C: 2
+  unit: treatment_mean
+variables:
+- code: x_early
+  column: 3
+  role: predictor
+  timing_dap_max: 20
+- code: x_mid
+  column: 4
+  role: predictor
+  timing_dap_max: 40
+- code: x_late
+  column: 5
+  role: excluded
+  reason: measured at harvest
+- code: yield
+  column: 6
+  role: target
+  min: 0
+  max: 20
+predictor_sets:
+  A:
+    include_treatment: true
+    include_traits: false
+    max_timing_dap: 0
+  E:
+    include_treatment: false
+    max_timing_dap: 40
+  C:
+    include_treatment: true
+    max_timing_dap: 40
+scopes:
+- name: all
+models:
+  Ridge:
+    type: ridge
+    params:
+      alpha: 1.0
+  RF:
+    type: random_forest
+    scale: false
+    params:
+      n_estimators: 20
+      random_state: 0
+      max_features: sqrt
+evaluation:
+  seed: 7
+  permutations:
+    n:
+      Ridge: 19
+      RF: 9
+    tests:
+    - kind: y
+      scope: all
+      set: E
+      model: Ridge
+    - kind: block
+      scope: all
+      set: C
+      model: Ridge
+  cv_comparison:
+    set: E
+    models:
+    - Ridge
+    n_splits: 3
+    n_repeats: 2
+  subset_curve:
+    pool_set: E
+    models:
+    - Ridge
+    report_k: 1

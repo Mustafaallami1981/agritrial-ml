@@ -1,0 +1,33 @@
+check,severity,variable,message,value
+V07_relation,warning,7N,7N = 0.05 x 5N in 100% of rows,0.05
+V07_relation,info,16N,16N = 17N + -30 in 80% of rows,-30.0
+V07_relation,warning,10N,10N = 7N + 9N in 100% of rows,1.0
+V07_relation,info,31N,31N = 18N x 22N in 100% of rows,1.0
+V07_relation,info,32N,32N = 19N x 23N in 100% of rows,1.0
+V07_relation,info,33N,33N = 20N x 24N in 100% of rows,1.0
+V07_relation,info,38N,38N = 19N x 29N in 87% of rows,0.8666666666666667
+V07_relation,info,39N,39N = 20N x 30N in 100% of rows,1.0
+V07_relation,info,44N,44N = 21N x 41N in 100% of rows,1.0
+V07_relation,info,48N,48N = 46N + 47N in 100% of rows,1.0
+V08_replicates,warning,15N,identical replicates in 88% of treatments; within-treatment CV 0.26%,
+V08_replicates,info,16N,identical replicates in 88% of treatments,
+V08_replicates,info,17N,identical replicates in 88% of treatments,
+V08_replicates,warning,25N,replicates form an exact arithmetic progression in 64% of treatments,
+V08_replicates,warning,26N,replicates form an exact arithmetic progression in 64% of treatments,
+V08_replicates,info,27N,identical replicates in 96% of treatments; within-treatment CV 0.17%,
+V08_replicates,info,34N,replicates form an exact arithmetic progression in 88% of treatments,
+V08_replicates,info,35N,replicates form an exact arithmetic progression in 92% of treatments,
+V08_replicates,info,36N,replicates form an exact arithmetic progression in 80% of treatments,
+V08_replicates,info,37N,replicates form an exact arithmetic progression in 80% of treatments,
+V08_replicates,info,40N,identical replicates in 100% of treatments; within-treatment CV 0.00%,
+V08_replicates,info,42N,replicates form an exact arithmetic progression in 88% of treatments,
+V08_replicates,info,46N,identical replicates in 88% of treatments,
+V08_replicates,info,47N,identical replicates in 92% of treatments; within-treatment CV 0.49%,
+V08_replicates,info,48N,identical replicates in 88% of treatments,
+V08_replicates,info,50N,identical replicates in 68% of treatments,
+V08_replicates,info,52N,identical replicates in 72% of treatments; within-treatment CV 0.34%,
+V08_replicates,info,53N,identical replicates in 76% of treatments; within-treatment CV 0.28%,
+V08_replicates,info,54N,identical replicates in 76% of treatments,
+V08_replicates,info,55N,identical replicates in 80% of treatments; within-treatment CV 0.34%,
+V08_replicates,info,56N,identical replicates in 80% of treatments; within-treatment CV 0.23%,
+V08_replicates,info,57N,identical replicates in 76% of treatments; within-treatment CV 0.49%,

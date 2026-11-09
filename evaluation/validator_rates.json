@@ -1,0 +1,10 @@
+{
+  "clean_any_warning": 0.0,
+  "clean_V07": 0.0,
+  "clean_V08": 0.0,
+  "inj_identical_detected": 1.0,
+  "inj_ap_detected": 1.0,
+  "inj_ratio_detected": 1.0,
+  "inj_offset_detected": 1.0,
+  "n_datasets": 200
+}

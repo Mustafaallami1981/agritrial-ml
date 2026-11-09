@@ -1,0 +1,578 @@
+# agritrial-ml configuration: spring 2024 maize case study
+data:
+  file: ../data/maize_spring2024_source.xls
+  sheet: 0
+  first_row: 3
+  last_row: 77
+  tokens:
+    zero: 0
+design:
+  block: 1
+  factors:
+    H: 2
+    F: 3
+  unit: treatment_mean
+  description: '5 weed-management (H) x 5 NPK (F) treatments, 3 blocks; source: Al-Bahadli et al. (2026) and thesis, spring 2024'
+variables:
+- code: 1N
+  column: 4
+  name: high plant (cm)
+  unit: cm
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 2N
+  column: 5
+  name: Stem diameter (m)
+  unit: mm (recorded heading says m)
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 3N
+  column: 6
+  name: Number of leaves
+  unit: count
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 4N
+  column: 7
+  name: Leaf area cm2
+  unit: cm2
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 5N
+  column: 8
+  name: Averafe Ear Weight 500
+  unit: g
+  role: excluded
+  reason: Target in the dataset equals this variable x 0.05 in every plot; using it would leak the target
+- code: 6N
+  column: 9
+  name: Number per Ear
+  unit: count
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 7N
+  column: 10
+  name: Grain Yield (t.ha)
+  unit: t/ha
+  role: target
+  min: 0
+  max: 20
+- code: 8N
+  column: 11
+  name: Crop Growth Rate (CGR) (g m-day)
+  unit: g/m2/day
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 9N
+  column: 12
+  name: Vegetative Yield t.ha
+  unit: t/ha
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 10N
+  column: 13
+  name: Biological Yield t.ha Vegetative  Cereal
+  unit: t/ha
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 11N
+  column: 14
+  name: Harvest Index %
+  unit: '%'
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 12N
+  column: 19
+  name: density heribces after 14 day 16 m2 . Plant
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 29
+  stage: 14 days after herbicide application (14-29 DAP depending on reference date)
+  min: 0
+- code: 13N
+  column: 20
+  name: density heribces after 30 day 16 m2 . Plant
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 45
+  stage: 30 days after application (30-45 DAP)
+  min: 0
+- code: 14N
+  column: 21
+  name: density heribces after 60 day 16 m2 . Plant
+  unit: as recorded
+  role: excluded
+  reason: Not reported for 2024 in the source thesis tables; another sheet of the workbook holds different values; could not be verified
+- code: 15N
+  column: 22
+  name: Dry Weight for heribces after 14 days gram 16 m2
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 29
+  stage: 14 days after application (14-29 DAP)
+  min: 0
+- code: 16N
+  column: 23
+  name: Dry Weight for heribces after 30 days gram 16 m2
+  unit: as recorded
+  role: excluded
+  reason: Weedy-plot treatment means differ from the source thesis table (by 100 g in 4 of 5 fertilizer levels); value could not be verified
+- code: 17N
+  column: 24
+  name: Dry Weight for heribces after 60 days gram 16 m2
+  unit: as recorded
+  role: excluded
+  reason: Equals 16N + 30 in every weedy plot (derived)
+- code: 18N
+  column: 25
+  name: Dry Weight for plant after 30 days gram 16 m2
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 30
+  stage: 30 DAP
+  min: 0
+- code: 19N
+  column: 26
+  name: Dry Weight for plant after 60 days gram 16 m2
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 60
+  stage: 60 DAP
+  min: 0
+- code: 20N
+  column: 27
+  name: Dry Weight for plant after end of the season gram 16 m2
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 21N
+  column: 28
+  name: Average plant dry grain weight gm
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 22N
+  column: 29
+  name: Phosphorus Concentration after 30 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 30
+  stage: 30 DAP
+  min: 0
+- code: 23N
+  column: 30
+  name: Phosphorus Concentration after 60 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 60
+  stage: 60 DAP
+  min: 0
+- code: 24N
+  column: 31
+  name: Phosphorus Concentration after  end of the season planting (g-mg)
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 25N
+  column: 32
+  name: Nitrogen  Concentration after 30 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 30
+  stage: 30 DAP
+  min: 0
+- code: 26N
+  column: 33
+  name: Nitrogen  Concentration after 60 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 60
+  stage: 60 DAP
+  min: 0
+- code: 27N
+  column: 34
+  name: Nitrogen  Concentration after  end of the season planting (g-mg)
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 28N
+  column: 35
+  name: Potassium  Concentration after 30 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 30
+  stage: 30 DAP
+  min: 0
+- code: 29N
+  column: 36
+  name: Potassium  Concentration after 60 days of planting (g-mg)
+  unit: as recorded
+  role: predictor
+  timing_dap_max: 60
+  stage: 60 DAP
+  min: 0
+- code: 30N
+  column: 37
+  name: Potassium   Concentration after  end of the season planting (g-mg)
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 31N
+  column: 38
+  name: Phosphorus Uptake after 30 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 32N
+  column: 39
+  name: Phosphorus Uptake after 60 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 33N
+  column: 40
+  name: Phosphorus Uptake after the end of the season from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 34N
+  column: 41
+  name: Nitrogen Uptake after 30 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 35N
+  column: 42
+  name: Nitrogen  Uptake after 60 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 36N
+  column: 43
+  name: Nitrogen Uptake after the end of the season from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 37N
+  column: 44
+  name: Potassium Uptake after 30 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 38N
+  column: 45
+  name: Potassium  Uptake after 60 days from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 39N
+  column: 46
+  name: Potassium Uptake after the end of the season from planting
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 40N
+  column: 47
+  name: Nitrogen Concentration in Corn grains
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 41N
+  column: 48
+  name: Phosphorus Concentration in Corn grains
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 42N
+  column: 49
+  name: Potassium Concentration in Corn grains
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 43N
+  column: 50
+  name: Uptake Nitrogen by grains
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 44N
+  column: 51
+  name: Uptake Phosphor by grains
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 45N
+  column: 52
+  name: Uptake Potassium by grains
+  unit: as recorded
+  role: excluded
+  reason: Uptake computed as concentration x dry weight; components are used instead
+- code: 46N
+  column: 57
+  name: Chlorophyll a(mg .g )
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 47N
+  column: 58
+  name: Chlorophyll b(mg .g )
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 48N
+  column: 59
+  name: Chlorophyll Total (mg .g )
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 49N
+  column: 60
+  name: Protein%
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 50N
+  column: 61
+  name: Proline Concentration Microgramsg Fresh Weight
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 51N
+  column: 62
+  name: '%Total Corbhydrate'
+  unit: as recorded
+  role: excluded
+  reason: Recorded at flowering or harvest, or derived from yield; not available early in the season
+- code: 52N
+  column: 63
+  name: MDAConcentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 53N
+  column: 64
+  name: GPX Concentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 54N
+  column: 65
+  name: CAT Concentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 55N
+  column: 66
+  name: POD Concentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 56N
+  column: 67
+  name: SODConcentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 57N
+  column: 68
+  name: ppoConcentration
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+- code: 58N
+  column: 69
+  name: Biomass
+  unit: as recorded
+  role: excluded
+  reason: Sampling time not recorded in the dataset
+predictor_sets:
+  A:
+    include_treatment: true
+    include_traits: false
+    max_timing_dap: 0
+  E30:
+    include_treatment: false
+    max_timing_dap: 45
+  E60:
+    include_treatment: false
+    max_timing_dap: 60
+  C30:
+    include_treatment: true
+    max_timing_dap: 45
+  C60:
+    include_treatment: true
+    max_timing_dap: 60
+scopes:
+- name: all25
+- name: excl_h1
+  exclude:
+    H:
+    - h1
+models:
+  LR:
+    type: linear
+  Ridge:
+    type: ridge
+    params:
+      alpha: 1.0
+  SVR:
+    type: svr
+    params:
+      C: 10
+      epsilon: 0.1
+      gamma: scale
+  RF:
+    type: random_forest
+    scale: false
+    params:
+      n_estimators: 200
+      max_features: sqrt
+      random_state: 42
+      n_jobs: 1
+evaluation:
+  seed: 2026
+  permutations:
+    n:
+      LR: 999
+      Ridge: 999
+      SVR: 999
+      RF: 199
+    tests:
+    - kind: y
+      scope: all25
+      set: A
+      model: LR
+    - kind: y
+      scope: all25
+      set: A
+      model: Ridge
+    - kind: y
+      scope: all25
+      set: E30
+      model: Ridge
+    - kind: y
+      scope: all25
+      set: E30
+      model: RF
+    - kind: y
+      scope: all25
+      set: E60
+      model: RF
+    - kind: y
+      scope: all25
+      set: C30
+      model: Ridge
+    - kind: y
+      scope: all25
+      set: C30
+      model: RF
+    - kind: y
+      scope: all25
+      set: C60
+      model: RF
+    - kind: block
+      scope: all25
+      set: C30
+      model: Ridge
+    - kind: block
+      scope: all25
+      set: C30
+      model: SVR
+    - kind: block
+      scope: all25
+      set: C30
+      model: RF
+    - kind: block
+      scope: all25
+      set: C60
+      model: Ridge
+    - kind: block
+      scope: all25
+      set: C60
+      model: SVR
+    - kind: block
+      scope: all25
+      set: C60
+      model: RF
+    - kind: y
+      scope: excl_h1
+      set: A
+      model: LR
+    - kind: y
+      scope: excl_h1
+      set: A
+      model: Ridge
+    - kind: y
+      scope: excl_h1
+      set: E30
+      model: Ridge
+    - kind: y
+      scope: excl_h1
+      set: E30
+      model: RF
+    - kind: y
+      scope: excl_h1
+      set: E60
+      model: RF
+    - kind: y
+      scope: excl_h1
+      set: C30
+      model: Ridge
+    - kind: y
+      scope: excl_h1
+      set: C30
+      model: RF
+    - kind: y
+      scope: excl_h1
+      set: C60
+      model: RF
+    - kind: block
+      scope: excl_h1
+      set: C30
+      model: Ridge
+    - kind: block
+      scope: excl_h1
+      set: C30
+      model: SVR
+    - kind: block
+      scope: excl_h1
+      set: C30
+      model: RF
+    - kind: block
+      scope: excl_h1
+      set: C60
+      model: Ridge
+    - kind: block
+      scope: excl_h1
+      set: C60
+      model: SVR
+    - kind: block
+      scope: excl_h1
+      set: C60
+      model: RF
+    - kind: block
+      scope: all25
+      set: C30
+      model: LR
+  cv_comparison:
+    set: E30
+    models:
+    - Ridge
+    - SVR
+    - RF
+    n_splits: 5
+    n_repeats: 10
+  subset_curve:
+    pool_set: E60
+    models:
+    - Ridge
+    - RF
+    report_k: 3
+validation:
+  replicates:
+    identical_share: 0.5
+    arith_prog_share: 0.5
+    min_within_cv_pct: 0.5
+  relations:
+    share: 0.8
+    rel_tol: 0.005
