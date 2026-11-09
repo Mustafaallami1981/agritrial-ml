@@ -4,7 +4,7 @@ title: "agritrial-ml: reproducible, leakage-aware machine-learning analysis of d
 version: 0.1.0
 date-released: 2026-11-09
 license: MIT
-repository-code: "https://github.com/USERNAME/agritrial-ml"
+repository-code: "https://github.com/Mustafaallami1981/agritrial-ml"
 authors:
   - family-names: Al-Lami
     given-names: Mustafa Naser
